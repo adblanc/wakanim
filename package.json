@@ -1,0 +1,24 @@
+{
+  "name": "@ablanc/wakanim",
+  "version": "1.0.0",
+  "description": "Node.js module to get informations on wakanim.tv site.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "cheerio": "^1.0.0-rc.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node.js",
+    "wakanim",
+    "simulcasts"
+  ],
+  "author": "BLANC Adrien",
+  "license": "MIT"
+}
