@@ -2,7 +2,7 @@
 ![package](https://img.shields.io/npm/v/@ablanc/wakanim)<br/>
 
 ## Description
-Node.js module to scrap content of wakanim.tv and get it as json.
+Node.js module to scrap content of wakanim.tv.
 
 ## Installation
 `$ npm install @ablanc/wakanim --save`
