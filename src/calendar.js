@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 // 2 semaines !!!
 function requestCalendar(startDate, endDate, free = false) {
   const url = `https://www.wakanim.tv/fr/v2/agenda/getevents?s=${startDate}&e=${endDate}&free=${free}`;
-  return fetch(url)
+  return fetch(url, { headers: { "accept-language": "fr-FR" } })
     .then(response => response.text())
     .catch(error =>
       console.error(`Error while fetching wakanim calendar : ${error}`)
@@ -26,15 +26,19 @@ async function getCalendar(startDate, endDate, free = false) {
                 .find(".Calendar-hourTxt")
                 .first()
                 .text(),
-              name: $(e)
+              title: $(e)
                 .find(".Calendar-epTitle")
                 .first()
                 .text(),
-              link: $(e)
+              number: $(e)
+                .find(".Calendar-epNumber")
+                .first()
+                .text(),
+              link: `https://wakanim.tv${$(e)
                 .find(".Calendar-epTitle")
                 .first()
-                .attr("href"),
-              img: `https://wakanim.tv${$(e)
+                .attr("href")}`,
+              image: `https://wakanim.tv${$(e)
                 .find(".Calendar-linkImg")
                 .first()
                 .attr("href")}`
@@ -47,10 +51,19 @@ async function getCalendar(startDate, endDate, free = false) {
             .first()
             .text()
             .trim(),
-          eps
+          episodes: eps
         };
       })
       .get();
+    days.forEach(({ episodes }) => {
+      episodes.forEach(anime => {
+        let time = anime.hour.split(":");
+        let hour = parseInt(time[0]);
+        hour += 1;
+        time[0] = hour.toString();
+        anime.hour = time.join(":");
+      });
+    });
     return days;
   } catch (ex) {
     console.error(ex);

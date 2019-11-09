@@ -15,4 +15,10 @@ async function start() {
   console.timeEnd("animes");
 }
 
-start();
+async function getWakanimCalendar() {
+  const result = await wakanim.getCalendar("04-11-2019", "09-11-2019", false);
+  await fs.writeFile("./wakanim_calendar.json", JSON.stringify(result));
+  console.log(`wakanim_calendar mis a jour !`);
+}
+
+getWakanimCalendar();
