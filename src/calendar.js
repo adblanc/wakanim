@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 // 2 semaines !!!
 function requestCalendar(startDate, endDate, free = false) {
   const url = `https://www.wakanim.tv/fr/v2/agenda/getevents?s=${startDate}&e=${endDate}&free=${free}`;
-  return fetch(url, { headers: { "accept-language": "fr-FR" } })
+  return fetch(url)
     .then(response => response.text())
     .catch(error =>
       console.error(`Error while fetching wakanim calendar : ${error}`)
@@ -35,13 +35,17 @@ async function getCalendar(startDate, endDate, free = false) {
                 .first()
                 .text(),
               link: `https://wakanim.tv${$(e)
-                .find(".Calendar-epTitle")
-                .first()
-                .attr("href")}`,
-              image: `https://wakanim.tv${$(e)
                 .find(".Calendar-linkImg")
                 .first()
-                .attr("href")}`
+                .attr("href")}`,
+              image: $(e)
+                .find(".Calendar-image")
+                .first()
+                .attr("src"),
+              language: $(e)
+                .find(".Calendar-tagTranslation")
+                .first()
+                .text()
             };
           })
           .get();
