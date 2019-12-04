@@ -21,6 +21,10 @@ async function getCalendar(startDate, endDate, free = false) {
         const eps = $(elem)
           .find(".Calendar-ep")
           .map((i, e) => {
+            const number = $(e)
+              .find(".Calendar-epNumber")
+              .first()
+              .text();
             return {
               hour: $(e)
                 .find(".Calendar-hourTxt")
@@ -30,10 +34,7 @@ async function getCalendar(startDate, endDate, free = false) {
                 .find(".Calendar-epTitle")
                 .first()
                 .text(),
-              number: $(e)
-                .find(".Calendar-epNumber")
-                .first()
-                .text(),
+              number: number.startsWith("0") ? number.substring(1) : number,
               link: `https://wakanim.tv${$(e)
                 .find(".Calendar-linkImg")
                 .first()

@@ -1,6 +1,6 @@
 {
   "name": "@ablanc/wakanim",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Node.js module to get informations on wakanim.tv website.",
   "main": "index.js",
   "directories": {
