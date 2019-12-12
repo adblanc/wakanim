@@ -19,7 +19,7 @@ async function getAnimeInfos(url) {
   try {
     const html = await requestAnime(url);
     const $ = cheerio.load(html);
-    let img = $(IMG_SELECTOR).attr("src");
+    let img = `https:${$(IMG_SELECTOR).attr("src")}`;
     let synopsis = $(SYNOPSIS_SELECTOR).text();
     let date = "";
     let originalName = "";
@@ -93,7 +93,8 @@ async function getAnimeInfos(url) {
       genres,
       copyright,
       followedBy,
-      extraInfos
+      extraInfos,
+      ref: "wakanim"
     };
     return result;
   } catch (ex) {

@@ -26,16 +26,24 @@ async function getCatalog() {
             .find("div > a")
             .attr("href")}`,
           year: $(elem).attr("data-year"),
-          rating: $(elem).attr("data-rating"),
+          rating: parseFloat(
+            $(elem)
+              .attr("data-rating")
+              .replace(",", ".")
+          ),
           type: $(elem).attr("data-type"),
-          episodes: $(elem)
-            .find(
-              "div > div.list-view.tooltip.js-tooltip > p.tooltip_text > strong"
-            )
-            .text(),
-          season: $(elem)
-            .find("div > div.list-view.tooltip.js-tooltip > span")
-            .text()
+          episodes: parseInt(
+            $(elem)
+              .find(
+                "div > div.list-view.tooltip.js-tooltip > p.tooltip_text > strong"
+              )
+              .text()
+          ),
+          season: parseInt(
+            $(elem)
+              .find("div > div.list-view.tooltip.js-tooltip > span")
+              .text()
+          )
         };
       })
       .get();

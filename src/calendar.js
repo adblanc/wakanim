@@ -34,19 +34,22 @@ async function getCalendar(startDate, endDate, free = false) {
                 .find(".Calendar-epTitle")
                 .first()
                 .text(),
-              number: number.startsWith("0") ? number.substring(1) : number,
+              number: parseInt(
+                number.startsWith("0") ? number.substring(1) : number
+              ),
               link: `https://wakanim.tv${$(e)
                 .find(".Calendar-linkImg")
                 .first()
                 .attr("href")}`,
-              image: $(e)
+              image: `https:${$(e)
                 .find(".Calendar-image")
                 .first()
-                .attr("src"),
+                .attr("src")}`,
               language: $(e)
                 .find(".Calendar-tagTranslation")
                 .first()
-                .text()
+                .text(),
+              ref: "wakanim"
             };
           })
           .get();
