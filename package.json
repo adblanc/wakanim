@@ -1,6 +1,6 @@
 {
   "name": "@ablanc/wakanim",
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "Node.js module to get informations on wakanim.tv website.",
   "main": "index.js",
   "directories": {
@@ -10,9 +10,12 @@
     "node-fetch": "^2.6.0",
     "cheerio": "^1.0.0-rc.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "node.js",
