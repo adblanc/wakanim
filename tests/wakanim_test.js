@@ -21,4 +21,4 @@ async function getWakanimCalendar() {
   console.log(`wakanim_calendar mis a jour !`);
 }
 
-getWakanimCalendar();
+start();

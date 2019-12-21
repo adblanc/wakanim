@@ -20,7 +20,7 @@ async function getCatalog() {
       .map((i, elem) => {
         return {
           name: $(elem)
-            .find("div > div.slider_item_description > span > strong")
+            .find("div > div.list-view.tooltip.js-tooltip > p.tooltip_title")
             .text(),
           link: `https://www.wakanim.tv${$(elem)
             .find("div > a")
