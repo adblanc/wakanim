@@ -1,9 +1,9 @@
-const wakanim = require("../../index");
+import * as wakanim from "../../src/index";
 
 describe("catalog", () => {
   it("should return catalog", async () => {
     const catalog = await wakanim.getCatalog();
-    catalog.forEach(anime => {
+    catalog.forEach((anime) => {
       expect(Object.keys(anime)).toEqual(
         expect.arrayContaining([
           "name",
@@ -12,7 +12,7 @@ describe("catalog", () => {
           "rating",
           "type",
           "episodes",
-          "season"
+          "season",
         ])
       );
     });
