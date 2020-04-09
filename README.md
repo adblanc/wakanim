@@ -1,6 +1,6 @@
 # Wakanim scrapper
 ![package](https://img.shields.io/npm/v/@ablanc/wakanim)
-![build](https://img.shields.io/travis/adblanc/wakanim)
+![build](https://img.shields.io/circleci/build/github/adblanc/wakanim)
 ![coverage](https://img.shields.io/coveralls/github/adblanc/wakanim)
 <br/>
 
