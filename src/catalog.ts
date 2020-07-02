@@ -24,6 +24,20 @@ const getRating = ($: Cheerio) => {
   return ratingString ? parseFloat(ratingString.replace(",", ".")) : 0;
 };
 
+const getEpisodes = ($: Cheerio) => {
+  const episodes = $.find(
+    "div > div.list-view.tooltip.js-tooltip > p.tooltip_text > strong"
+  ).text();
+
+  return episodes ? parseInt(episodes) : 0;
+};
+
+const getSeason = ($: Cheerio) => {
+  const season = $.find("div > div.list-view.tooltip.js-tooltip > span").text();
+
+  return season ? parseInt(season) : 0;
+};
+
 export const getCatalog = async (): Promise<Episode[]> => {
   const html = await requestCatalog();
   const $ = cheerio.load(html);
@@ -39,16 +53,8 @@ export const getCatalog = async (): Promise<Episode[]> => {
         year: $(elem).attr("data-year"),
         rating: getRating($(elem)),
         type: $(elem).attr("data-type"),
-        episodes: parseInt(
-          $(elem)
-            .find(
-              "div > div.list-view.tooltip.js-tooltip > p.tooltip_text > strong"
-            )
-            .text()
-        ),
-        season: parseInt(
-          $(elem).find("div > div.list-view.tooltip.js-tooltip > span").text()
-        ),
+        episodes: getEpisodes($(elem)),
+        season: getSeason($(elem)),
       };
     })
     .get();
