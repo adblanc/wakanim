@@ -36,7 +36,7 @@ const formatEpisodeHour = (episode: Episode) => {
   let time = episode.hour.split(":");
   let hour = parseInt(time[0]);
 
-  hour += 1;
+  hour += 2;
   time[0] = hour.toString();
 
   episode.hour = time.join(":");
